@@ -1,9 +1,9 @@
-package DIYJavaConcurrent;
+package DIYJavaConcurrent.mutexes;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class PetersonMutex implements Mutex{
+public class PetersonMutex implements ILock {
     private final AtomicBoolean[] flags;
     private final AtomicInteger victim;
     private int owner;

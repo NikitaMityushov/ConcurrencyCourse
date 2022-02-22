@@ -1,8 +1,8 @@
-package DIYJavaConcurrent;
+package DIYJavaConcurrent.mutexes;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class TicketLock implements Mutex{
+public class TicketLock implements ILock {
     private final AtomicInteger nextFreeTicket;
     private final AtomicInteger ownerTicket;
 
@@ -17,6 +17,7 @@ public class TicketLock implements Mutex{
 
         while(this.ownerTicket.get() != myTicket) {
             // backoff
+            Thread.onSpinWait();
         }
     }
 
